@@ -1,0 +1,5 @@
+/* Адаптивная сетка: 4 / 3 / 2 / 1 колонки, карточка 240 px */
+.players-grid { display: grid; grid-template-columns: repeat(4, 240px); gap: 20px; justify-content: center; }
+@media (max-width: 1200px) { .players-grid { grid-template-columns: repeat(3, 240px); gap: 18px; } }
+@media (max-width: 900px)  { .players-grid { grid-template-columns: repeat(2, 240px); gap: 16px; } }
+@media (max-width: 560px)  { .players-grid { grid-template-columns: 1fr; gap: 12px; } .players-grid .pcard { width: 100%; } }

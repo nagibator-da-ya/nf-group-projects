@@ -1,0 +1,4 @@
+.crumbs { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+.crumbs a { color: var(--muted); }
+.crumbs b { color: var(--text); font-weight: 500; }
+.crumbs__sep { margin: 0 8px; }

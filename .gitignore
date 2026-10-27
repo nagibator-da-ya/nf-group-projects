@@ -1,0 +1,22 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.env
+*.log
+projects/media-monitor/output/
+projects/media-monitor/data/
+nf-gpt-knowledge-base/
+web/node_modules/
+web/dist/
+web/.env
+
+web/src-tauri/target/
+projects/media-monitor/results/
+projects/media-monitor/inbox/*
+!projects/media-monitor/inbox/.gitkeep
+
+# Корпоративный журнал: только для внутренней коммуникации, не публиковать
+web/public/nf-magazine/
+nf-magazine*/
+projects/media-monitor/ACCESS_AUDIT.md

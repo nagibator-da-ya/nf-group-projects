@@ -1,0 +1,3 @@
+.mock-banner { font-size: 13px; padding: 8px 12px; border-radius: 6px; margin-bottom: 16px; }
+.mock-banner--mock { background: #FBEFCF; color: #7A5600; border: 1px solid #F0D58A; }
+.mock-banner--api { background: #E2F3E8; color: #1F6B45; border: 1px solid #B6DEC4; }

@@ -1,0 +1,9 @@
+.filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 20px; }
+.filters__search { flex: 1 1 260px; }
+.filters__search input { width: 100%; height: 42px; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-size: 15px; }
+.filters__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters__sort { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+.filters__sort select { height: 38px; border: 1px solid var(--line); border-radius: 8px; padding: 0 8px; font: inherit; }
+@media (max-width: 480px) {
+  .filters__sort { width: 100%; justify-content: space-between; }
+}

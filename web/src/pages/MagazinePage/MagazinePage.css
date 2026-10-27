@@ -1,0 +1,11 @@
+.mag__years { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.mag { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+.mag__issue { text-decoration: none; background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.mag__cover { aspect-ratio: 3 / 4; background: linear-gradient(160deg, #1B2A44, #0B1626); color: #fff; padding: 16px;
+  display: flex; flex-direction: column; justify-content: space-between; }
+.mag__cover span { font-weight: 700; letter-spacing: .2em; font-size: 12px; }
+.mag__cover em { color: var(--gold); font-style: normal; }
+.mag__cover b { font-size: 48px; color: var(--gold); }
+.mag__cover i { font-size: 16px; }
+.mag__cap { padding: 10px 14px; font-size: 13px; color: var(--muted); }
+@media (max-width: 480px) { .mag { grid-template-columns: 1fr 1fr; } .mag__cover b { font-size: 34px; } }

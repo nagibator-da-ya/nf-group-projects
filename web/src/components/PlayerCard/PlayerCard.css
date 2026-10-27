@@ -1,0 +1,16 @@
+/* Карточка фиксированной ширины 240 px, высота 230 px */
+.pcard { width: 240px; min-height: 230px; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.pcard--nf { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-soft); }
+.pcard__role { align-self: flex-start; font-size: 12px; padding: 3px 10px; border-radius: 12px; }
+.pcard__role--seller { background: #E4E9F5; color: #12285A; }
+.pcard__role--buyer { background: #F8E4E6; color: #B3202C; }
+.pcard__role--consultant { background: var(--gold-soft); color: #7A5B1E; }
+.pcard__name { margin: 0; font-size: 16px; font-weight: 600; min-height: 40px; }
+.pcard__nums { display: flex; gap: 20px; }
+.pcard__nums b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+.pcard__nums span { font-size: 12px; color: var(--muted); }
+.pcard__bar { height: 6px; background: #ECEFF5; border-radius: 3px; overflow: hidden; }
+.pcard__bar i { display: block; height: 100%; background: var(--navy); }
+.pcard--nf .pcard__bar i { background: var(--gold); }
+.pcard__btn { margin-top: auto; align-self: flex-start; }

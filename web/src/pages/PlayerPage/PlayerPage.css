@@ -1,0 +1,12 @@
+.player { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; max-width: 760px; }
+.player__role { font-size: 12px; padding: 3px 10px; border-radius: 12px; background: var(--gold-soft); color: #7A5B1E; }
+.player h1 { margin: 12px 0 6px; color: var(--navy); font-size: clamp(24px, 4vw, 34px); }
+.player h2 { font-size: 18px; margin: 24px 0 10px; }
+.player__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.player__stats div { background: var(--bg); border-radius: 8px; padding: 14px; }
+.player__stats b { display: block; font-size: 24px; color: var(--navy); }
+.player__stats span { font-size: 12px; color: var(--muted); }
+.player__bar { height: 10px; background: #ECEFF5; border-radius: 5px; overflow: hidden; }
+.player__bar i { display: block; height: 100%; background: var(--gold); }
+.player__deals { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+@media (max-width: 480px) { .player__stats { grid-template-columns: 1fr 1fr; } .player { padding: 16px; } }

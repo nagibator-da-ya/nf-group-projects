@@ -1,0 +1,26 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "NF Hub",
+  "version": "0.1.0",
+  "identifier": "ru.nfgroup.hub.student",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:3000",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      { "title": "NF Hub", "width": 1100, "height": 760, "resizable": true, "fullscreen": false }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data: blob:; connect-src 'self' http://192.168.1.50:8080; script-src 'self'; style-src 'self' 'unsafe-inline';"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+  }
+}

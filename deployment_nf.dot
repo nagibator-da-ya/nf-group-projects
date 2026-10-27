@@ -1,0 +1,48 @@
+digraph D {
+  graph [rankdir=LR, fontname="Helvetica", nodesep=0.35, ranksep=1.0, pad=0.3, bgcolor="white",
+         label="Deployment-диаграмма NF Hub (фактическая архитектура; пунктир - опционально, не реализовано)", labelloc=t, fontsize=16];
+  node [shape=component, fontname="Helvetica", fontsize=10, style=filled, fillcolor="#FFFFFF"];
+  edge [fontname="Helvetica", fontsize=9, color="#444444"];
+
+  subgraph cluster_phone { label="<<device>> Смартфон"; style=filled; fillcolor="#EAF2FB"; color="#2F5597";
+    subgraph cluster_pwa { label="<<execution env>> Браузер / PWA (standalone)"; style=filled; fillcolor="#F7FBFF";
+      p_spa [label="React SPA NF Hub\nreact-router, basename /nf-group-projects/"];
+      p_store [label="Redux store\nslices: players, filters\n(query, role, sort, year)"];
+      p_mock [label="mock.ts\n17 игроков, 8 сделок,\n10 выпусков NF Magazine"];
+      p_banner [label="MockBanner\n«Демо-данные (mock)»"];
+      p_sw [label="Service Worker (Workbox)\n+ Cache Storage"];
+    }
+  }
+  subgraph cluster_pc { label="<<device>> Ноутбук разработчика"; style=filled; fillcolor="#EEF7EA"; color="#548235";
+    subgraph cluster_tauri { label="<<execution env>> Tauri 2 (Rust + WebView)"; style=filled; fillcolor="#F8FCF6";
+      t_spa [label="React SPA + Redux\n(dist, base=/)"];
+      t_core [label="Rust core\nCSP connect-src :8080"];
+    }
+    subgraph cluster_vite { label="<<execution env>> Node.js - Vite dev :3000 (HTTPS, mkcert)"; style=filled; fillcolor="#F8FCF6";
+      v_dev [label="Vite dev + HMR"];
+      v_proxy [label="proxy /api → :8080"];
+    }
+  }
+  subgraph cluster_gh { label="<<device>> GitHub Pages (CDN)"; style=filled; fillcolor="#FFF6E5"; color="#BF8F00";
+    gh [label="Статика /nf-group-projects/:\nindex.html, 404.html, assets/*,\nsw.js, manifest.webmanifest"];
+  }
+  subgraph cluster_kf { label="<<device>> kf.expert (сайт NF GROUP)"; style=filled; fillcolor="#F2F2F2"; color="#7F7F7F";
+    kf [label="PDF выпусков NF Magazine\nmedia.kf.expert"];
+  }
+  subgraph cluster_api { label="<<device>> Сервер API в LAN (не реализован)"; style="filled,dashed"; fillcolor="#FBFBFB"; color="#999999";
+    api [label="REST API :8080\nGET /api/v1/players\nGET /api/v1/deals", style="filled,dashed"];
+    db [shape=cylinder, label="БД игроков и сделок", style="filled,dashed"];
+  }
+
+  gh -> p_spa [label="HTTPS :443\nGET статика", color="#BF8F00"];
+  p_sw -> gh [label="HTTPS precache", style=dashed, color="#BF8F00"];
+  p_spa -> p_store [label="dispatch / useSelector"];
+  p_spa -> p_mock [label="fallback: /api → 404"];
+  p_store -> p_banner [label="source = mock"];
+  p_spa -> kf [label="HTTPS GET PDF\n(ссылка)"];
+  t_core -> t_spa [label="IPC / WebView", dir=both];
+  t_spa -> api [label="HTTP REST JSON\nhttp://<IP>:8080", style=dashed, color="#C00000"];
+  v_dev -> v_proxy [style=invis];
+  v_proxy -> api [label="HTTP /api/*", style=dashed, color="#548235"];
+  api -> db [label="SQL", style=dashed];
+}
